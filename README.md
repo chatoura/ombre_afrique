@@ -193,8 +193,17 @@ Ce projet contient plusieurs requêtes SQL pour extraire des informations depuis
 
 
 Les résultats de ces requêtes sont présentés dans le dossier des captures d’écran.
+![Uploading Capture d’écran du 2025-07-07 10-32-06.png…]()
+
+![Uploading Capture d’écran du 2025-07-07 10-32-30.png…]()
 
 
+![Capture d’écran du 2025-07-07 10-32-51](https://github.com/user-attachments/assets/b4f16d81-3755-475b-a730-ca04cee0787f)
+
+
+![Uploading Capture d’écran du 2025-07-07 10-33-57.png…]()
+
+![Capture d’écran du 2025-07-07 10-35-13](https://github.com/user-attachments/assets/a85078d7-2e8c-49db-9385-38a7a6aff9b8)
 
 
 ## ✅ Fonctionnalités

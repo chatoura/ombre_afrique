@@ -179,6 +179,23 @@ CREATE TABLE ligne_commande (
     FOREIGN KEY (id_plat) REFERENCES plat(id_plat)
 );
 
+📊 Requêtes SQL (illustrées par des captures d'écran)
+
+Ce projet contient plusieurs requêtes SQL pour extraire des informations depuis la base de données. Voici quelques exemples des opérations effectuées :
+
+✅ Affichage des plats disponibles par catégorie.
+
+✅ Récupération des réservations faites sur une période donnée.
+
+✅ Consultation de la liste des clients ayant effectué des commandes.
+
+✅ Requête avec jointure entre commande, client et plat.
+
+
+Les résultats de ces requêtes sont présentés dans le dossier des captures d’écran.
+
+
+
 
 ## ✅ Fonctionnalités
 

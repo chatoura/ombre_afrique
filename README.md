@@ -14,6 +14,172 @@ Ce projet a pour objectif de simuler un système d'information complet pour un r
 
 Ce projet s'inscrit dans le cadre de ma formation en développement web et mobile et représente mon projet personnel.
 
+📘 Modèle Conceptuel de Données (MCD) – Restaurant Ombre d’Afrique
+
+Le Modèle Conceptuel de Données (MCD) du restaurant Ombre d’Afrique représente les principales entités du système et leurs relations. Il permet de structurer les informations essentielles liées à la gestion des clients, commandes, plats, paiements, etc.
+
+📌 Entités principales :
+
+Client : représente les clients du restaurant.
+
+Commande : chaque client peut passer plusieurs commandes.
+
+Plat : les plats proposés à la carte.
+
+Paiement : chaque commande est associée à un paiement.
+
+Catégorie : chaque plat appartient à une catégorie (entrée, plat principal, dessert...).
+
+Employé : ceux qui gèrent les commandes ou servent les clients.
+
+Table : les tables disponibles dans le restaurant.
+
+
+🔗 Relations clés :
+
+Un client peut effectuer plusieurs commandes.
+
+Une commande peut contenir plusieurs plats (relation de type n-n via une entité associative, ex : Contenir).
+
+Un plat appartient à une seule catégorie.
+
+Une commande est liée à un paiement.
+
+Un employé peut enregistrer plusieurs commandes.
+
+Une commande est associée à une table.
+🖼️ MCD (Image)
+
+Voici l’image du MCD générée à l’aide de draw.io :
+
+![Capture d’écran du 2025-07-07 12-23-19](https://github.com/user-attachments/assets/82074587-61ff-4d66-992d-cca166664dd5)
+
+🧩 Modèle Logique de Données (MLD) – Restaurant Ombre d’Afrique
+
+Le MLD est la traduction du MCD vers un format relationnel, en vue de sa mise en œuvre dans une base de données (par exemple MySQL ou PostgreSQL). Il détaille les tables, leurs attributs, clés primaires (PK), clés étrangères (FK) et les relations.
+
+📋 Tables du système
+
+1. client
+
+Champ	Type	Clé
+
+id_client	INT	PK
+nom	VARCHAR	
+prenom	VARCHAR	
+telephone	VARCHAR	
+
+
+2. commande
+
+Champ	Type	Clé
+
+id_commande	INT	PK
+date_commande	DATE	
+id_client	INT	FK → client(id_client)
+id_employe	INT	FK → employe(id_employe)
+id_table	INT	FK → table_restaurant(id_table)
+
+
+3. plat
+
+Champ	Type	Clé
+
+id_plat	INT	PK
+nom_plat	VARCHAR	
+prix	DECIMAL	
+id_categorie	INT	FK → categorie(id_categorie)
+
+
+4. categorie
+
+Champ	Type	Clé
+
+id_categorie	INT	PK
+nom_categorie	VARCHAR	
+
+
+5. employe
+
+Champ	Type	Clé
+
+id_employe	INT	PK
+nom_employe	VARCHAR	
+poste	VARCHAR	
+
+
+6. paiement
+
+Champ	Type	Clé
+
+id_paiement	INT	PK
+montant	DECIMAL	
+type_paiement	VARCHAR	
+id_commande	INT	FK → commande(id_commande)
+
+
+7. table_restaurant
+
+Champ	Type	Clé
+
+id_table	INT	PK
+numero	INT	
+nb_places	INT	
+
+
+8. contenir (table associative entre commande et plat)
+
+Champ	Type	Clé
+
+id_commande	INT	PK, FK → commande(id_commande)
+id_plat	INT	PK, FK → plat(id_plat)
+quantite	INT 
+💡 Remarque : Toutes les clés étrangères assurent l'intégrité référentielle entre les tables.
+
+-- Table : client
+CREATE TABLE client (
+    id_client INT PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(100),
+    prenom VARCHAR(100),
+    telephone VARCHAR(20)
+);
+
+-- Table : personnel
+CREATE TABLE personnel (
+    id_personnel INT PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(100),
+    prenom VARCHAR(100),
+    poste VARCHAR(50)
+);
+
+-- Table : plat
+CREATE TABLE plat (
+    id_plat INT PRIMARY KEY AUTO_INCREMENT,
+    nom_plat VARCHAR(100),
+    prix DECIMAL(10,2)
+);
+
+-- Table : commande
+CREATE TABLE commande (
+    id_commande INT PRIMARY KEY AUTO_INCREMENT,
+    date_commande DATE,
+    id_client INT,
+    id_personnel INT,
+    FOREIGN KEY (id_client) REFERENCES client(id_client),
+    FOREIGN KEY (id_personnel) REFERENCES personnel(id_personnel)
+);
+
+-- Table : ligne_commande (relation entre commande et plat)
+CREATE TABLE ligne_commande (
+    id_commande INT,
+    id_plat INT,
+    quantite INT,
+    PRIMARY KEY (id_commande, id_plat),
+    FOREIGN KEY (id_commande) REFERENCES commande(id_commande),
+    FOREIGN KEY (id_plat) REFERENCES plat(id_plat)
+);
+
+
 ## ✅ Fonctionnalités
 
 - Gestion des clients, employés, produits, fournisseurs, plats

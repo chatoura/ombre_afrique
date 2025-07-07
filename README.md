@@ -241,4 +241,13 @@ ombre_afrique/
    git clone <url_du_dépôt>
    cd ombre_afrique
 
+   
+✅ Conclusion :
+Ce projet représente la modélisation complète du système d'information du restaurant Ombre d'Afrique, situé à Abéché.
+Il comprend l’analyse conceptuelle (MCD), logique (MLD), physique (MPD), ainsi que des exemples de requêtes SQL.
+Grâce à cette base de données, la gestion des commandes, des clients, des produits et des paiements devient plus efficace et centralisée.
+Ce travail a été réalisé dans le cadre de ma formation en développement web et mobile.
+
+✍️ Réalisé par Fatime Mahamat Sileh
+📅 Juillet 2025
 
